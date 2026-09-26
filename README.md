@@ -1,32 +1,34 @@
-# ROS2-Projects
-> **Note:** This is my personal fork of our team's ROS 2 robotics project.
-Collection of ROS 2 robotics tasks and package simulations
-Welcome to our team repository, which contains all completed tasks and packages for our ROS 2 system design projects.
+# ROS 2 Projects: Robotics Tasks & Package Simulations
+
+> **Note:** This repository is my personal fork of a collaborative project developed alongside my team for our ROS 2 system design coursework. 
+
+Welcome to the repository containing the source code, custom nodes, and launch configurations for our automated ROS 2 workflows and package simulations.
 
 ## 👥 The Team
+This project was collaboratively designed and implemented by:
 * **Rowan Tamer** 
 * **Nada Mahmoud**  
 * **Abd El-Rhman Saad**
-* **Marina said**
-* **Razan ramzy**
+* **Marina Said**
+* **Razan Ramzy**
 * **Tasneem El-Shandidi**
 * **Mariam Mamdouh**
-* **Asmaa galal**
+* **Asmaa Galal**
 
 ## 🎥 Task Explanation Videos
 For a visual breakdown and detailed explanation of how each task operates, you can watch our project demonstration videos here:
-👉 [ROS2 Projects Video Explanations](https://drive.google.com/drive/folders/14aFGvR1XqMG_KZoHEpeqvxyVF2EOvVvs)
+👉 [ROS 2 Projects Video Explanations](https://drive.google.com/drive/folders/14aFGvR1XqMG_KZoHEpeqvxyVF2EOvVvs)
 
 ## 🚀 Project Overview & Key Tasks
-This repository contains the source code, custom nodes, and launch configurations for our automated workflows. 
+As a team, we collaboratively engineered the following core functionalities:
 
 ### 1. Robot Control & Trajectory Planning
-* Implemented nodes handling coordinate transforms and motor trajectory configurations.
-* Programmed safety thresholds to prevent actuator saturation during high-acceleration motion profiles.
+* **Kinematics & Motion:** Co-developed nodes to handle coordinate transforms and configure motor trajectory profiles.
+* **Safety Protocols:** Programmed safety thresholds to prevent actuator saturation during high-acceleration movements.
 
 ### 2. Multi-Node Communication & Custom Interfaces
-* Designed customized publishers and subscribers using custom `.msg` and `.srv` interfaces to communicate robot joints states.
-* Configured launch files to orchestrate multiple life-cycle nodes simultaneously.
+* **Data Pipelines:** Designed and implemented customized publishers and subscribers using custom `.msg` and `.srv` interfaces to communicate robot joint states effectively.
+* **Orchestration:** Configured and optimized launch files to orchestrate the simultaneous execution of multiple life-cycle nodes.
 
 ## 🛠️ Prerequisites & Setup
 To run these packages locally, ensure you have a working installation of **Ubuntu Linux** and **ROS 2**.
