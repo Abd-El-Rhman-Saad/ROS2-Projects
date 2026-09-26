@@ -47,10 +47,11 @@ Follow these sequential steps to clone, build, and source the workspace:
 ## 👥 The Development Team
 This complete system design was successfully delivered through the joint efforts of:
 * **Abd El-Rhman Saad**
+* **Tasneem El-Shandidi**
+* **Mariam Mamdouh**
 * **Rowan Tamer** 
 * **Nada Mahmoud**  
 * **Marina Said**
 * **Razan Ramzy**
 * **Tasneem El-Shandidi**
-* **Mariam Mamdouh**
 * **Asmaa Galal**
