@@ -53,5 +53,4 @@ This complete system design was successfully delivered through the joint efforts
 * **Nada Mahmoud**  
 * **Marina Said**
 * **Razan Ramzy**
-* **Tasneem El-Shandidi**
 * **Asmaa Galal**
