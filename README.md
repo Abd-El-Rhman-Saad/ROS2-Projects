@@ -1,28 +1,29 @@
 # ROS 2 Robotics Control & Simulation Packages
 
-## 🚀 Overview
-Welcome to the repository containing the source code, custom nodes, and launch configurations for our automated ROS 2 workflows and package simulations.
+## 📖 Overview
+This repository contains the source code for five distributed, multi-node vision and perception systems built using **ROS 2 (Robot Operating System)**. The primary focus of these packages is real-time computer vision, object detection, and depth estimation, acting as the perception layer for robotic applications. 
 
-This project was a highly collaborative, full-stack team effort developed for our ROS 2 system design coursework. All team members participated in the complete development lifecycle—from writing node logic and defining custom interfaces to testing and simulation.
+*(Note: This repository focuses on the vision/perception nodes and custom communication interfaces. Actuation and physical motor control nodes are handled separately and are not included here).*
 
 ## 🛠️ Technical Stack & Core Skills
-* **Framework:** ROS 2 (Robot Operating System)
-* **Languages:** C++ / Python
+* **Framework:** ROS 2 (Humble / Foxy)
+* **Languages:** C++, Python
+* **Computer Vision & AI:** OpenCV, YOLO, Depth Anything V2
 * **Build System:** Colcon
 * **Environment:** Ubuntu Linux
 * **Key Concepts:** Node Lifecycle Management, Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`), Trajectory Planning, Kinematics.
 
-## ⚙️ Key System Features
-As a team, we collaboratively engineered the following core functionalities:
+## 🚀 Included Systems
+1. **Exam Proctoring System**
+2. **Security Surveillance**
+3. **Visual Navigation**
+4. **Multi-View Geometry**
+5. **Fleet Coordination**
 
-### 1. Robot Control & Trajectory Planning
-* **Kinematics & Motion:** Co-developed transform nodes to handle complex coordinate kinematics and configure motor trajectory profiles.
-* **Safety Protocols:** Programmed dynamic safety thresholds and constraints to effectively prevent actuator saturation during high-acceleration motion profiles.
-
-### 2. Multi-Node Communication & Integration
-* **Data Pipelines:** Designed and deployed customized publishers and subscribers utilizing user-defined `.msg` and `.srv` interfaces for real-time robot joint state communication.
-* **Orchestration:** Configured and optimized complex `launch` files to orchestrate the simultaneous execution of multiple life-cycle nodes seamlessly.
-
+## 🏗️ Architecture & Communication
+* **Modular Node Pipeline:** `Camera Node` → `Detection Node` → `Depth Node` → `Decision/Monitoring Node`.
+* Features custom `.msg` and `.srv` interfaces to ensure lightweight, structured data transfer between distributed nodes across the network.
+  
 ## 🎥 Project Demonstration
 For a visual breakdown and detailed explanation of the system's operation and node interactions, please refer to our demonstration videos:
 👉 [ROS 2 Projects Video Explanations](https://drive.google.com/drive/folders/14aFGvR1XqMG_KZoHEpeqvxyVF2EOvVvs)
