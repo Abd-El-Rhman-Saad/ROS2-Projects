@@ -11,7 +11,7 @@ This repository contains the source code for five distributed, multi-node vision
 * **Computer Vision & AI:** OpenCV, YOLO, Depth Anything V2
 * **Build System:** Colcon
 * **Environment:** Ubuntu Linux
-* **Key Concepts:** Node Lifecycle Management, Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`), Trajectory Planning, Kinematics.
+* **Key Concepts:** Node Lifecycle Management, Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`).
 
 ## 🚀 Included Systems
 1. **Exam Proctoring System**
@@ -33,7 +33,10 @@ To run these packages locally, ensure you have a working installation of **Ubunt
 
 Follow these sequential steps to clone, build, and source the workspace:
 
-1. Create a clean `colcon` workspace directory structure on your system.
+1. Create a clean `colcon` workspace directory structure on your system:
+   ```bash
+   mkdir -p ~/ros2_ws/src
+   cd ~/ros2_ws/src
 2. Clone this repository directly into your workspace's `src` folder.
 3. Run `rosdep install` from the root of your workspace to automatically fetch missing dependencies.
 4. Build the packages using the symlink option to allow quick updates to script modifications:
