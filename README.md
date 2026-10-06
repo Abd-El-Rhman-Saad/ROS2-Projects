@@ -11,7 +11,7 @@ This repository contains the source code for five distributed, multi-node vision
 * **Computer Vision & AI:** OpenCV, YOLO, Depth Anything V2
 * **Build System:** Colcon
 * **Environment:** Ubuntu Linux
-* **Key Concepts:** Node Lifecycle Management, Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`).
+* **Key Concepts:** Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`).
 
 ## 🚀 Included Systems
 1. **Exam Proctoring System**
