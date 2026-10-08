@@ -1,52 +1,48 @@
-# ROS 2 Distributed Vision & Coordination Systems
+# ROS 2 Robotics Control & Simulation Packages
 
-## 📖 Overview
-Source code of **five multi-node ROS 2 systems** written in Python (`rclpy`): **four computer-vision pipelines** (camera → detection → depth/analysis → decision) and **one multi-vehicle coordination system**. Each system is split into independent nodes that communicate over ROS 2 topics and services.
+## 🚀 Overview
+Welcome to the repository containing the source code, custom nodes, and launch configurations for our automated ROS 2 workflows and package simulations.
 
-> **Scope:** this repository contains the **node scripts**. The custom interface packages used by the nodes (`multi_view_interfaces`, `fleet_interfaces`, `navigation_msgs`) and the Depth Anything V2 model code/weights are **not bundled here** and must be available in your workspace (see *Dependencies*). Actuation and physical motor control are not part of this repository.
+This project was a highly collaborative, full-stack team effort developed for our ROS 2 system design coursework. All team members participated in the complete development lifecycle—from writing node logic and defining custom interfaces to testing and simulation.
 
-## 🛠️ Tech Stack
-* **Framework:** ROS 2, `rclpy`, `cv_bridge`, `message_filters`
-* **Language:** Python
-* **Vision & AI:** OpenCV, NumPy, PyTorch, YOLO (Ultralytics), Depth Anything V2
+## 🛠️ Technical Stack & Core Skills
+* **Framework:** ROS 2 (Robot Operating System)
+* **Languages:** C++ / Python
+* **Build System:** Colcon
 * **Environment:** Ubuntu Linux
+* **Key Concepts:** Node Lifecycle Management, Topics (Publishers/Subscribers), Custom Interfaces (`.msg`, `.srv`), Trajectory Planning, Kinematics.
 
-## 🚀 Included Systems
+## ⚙️ Key System Features
+As a team, we collaboratively engineered the following core functionalities:
 
-| System | Nodes |
-| :--- | :--- |
-| **Smart Exam Proctoring** | camera stream · face detection · object detection · depth estimation · behavior analysis · rule evaluation · alert action · system monitor |
-| **Smart Security Surveillance** | camera stream · object detection · depth estimation · scene analysis · event manager · event logger · security response · system monitor |
-| **Visual Navigation Hint** | camera stream · object detection · depth estimation · feature extraction · motion tracking · visual odometry · navigation · action execution |
-| **Multi-View Geometry Reasoning** | camera stream · keypoint detection · descriptor extraction · feature matching · match filtering · geometric consistency · motion estimation · reliability decision |
-| **Grid Fleet Coordination** | task manager · traffic controller · vehicle node · monitor node |
+### 1. Robot Control & Trajectory Planning
+* **Kinematics & Motion:** Co-developed transform nodes to handle complex coordinate kinematics and configure motor trajectory profiles.
+* **Safety Protocols:** Programmed dynamic safety thresholds and constraints to effectively prevent actuator saturation during high-acceleration motion profiles.
 
-## 🏗️ Architecture
-* **Modular pipelines:** each stage is a separate node, e.g. `Camera → Detection → Depth → Decision / Monitoring`.
-* **Topics and services** carry images, detections and decisions between nodes; custom `.msg` / `.srv` interfaces are used for structured data (interface packages listed above).
+### 2. Multi-Node Communication & Integration
+* **Data Pipelines:** Designed and deployed customized publishers and subscribers utilizing user-defined `.msg` and `.srv` interfaces for real-time robot joint state communication.
+* **Orchestration:** Configured and optimized complex `launch` files to orchestrate the simultaneous execution of multiple life-cycle nodes seamlessly.
 
-## 🎥 Demonstration
-Demo videos and node-interaction explanations: [ROS 2 Projects Video Explanations](https://drive.google.com/drive/folders/14aFGvR1XqMG_KZoHEpeqvxyVF2EOvVvs)
+## 🎥 Project Demonstration
+For a visual breakdown and detailed explanation of the system's operation and node interactions, please refer to our demonstration videos:
+👉 [ROS 2 Projects Video Explanations](https://drive.google.com/drive/folders/14aFGvR1XqMG_KZoHEpeqvxyVF2EOvVvs)
 
-## 📦 Dependencies
-Python packages imported by the nodes: `rclpy`, `cv_bridge`, `opencv-python`, `numpy`, `torch`, `ultralytics`, plus the Depth Anything V2 code (`depth_anything_v2`) and its model weights.
-Interface packages (not included): `multi_view_interfaces`, `fleet_interfaces`, `navigation_msgs`.
+## 💻 Prerequisites & Workspace Setup
+To run these packages locally, ensure you have a working installation of **Ubuntu Linux** and **ROS 2**.
 
-## 💻 Setup
-1. Create a ROS 2 workspace and clone this repository into `src`:
+Follow these sequential steps to clone, build, and source the workspace:
+
+1. Create a clean `colcon` workspace directory structure on your system.
+2. Clone this repository directly into your workspace's `src` folder.
+3. Run `rosdep install` from the root of your workspace to automatically fetch missing dependencies.
+4. Build the packages using the symlink option to allow quick updates to script modifications:
    ```bash
-   mkdir -p ~/ros2_ws/src
-   cd ~/ros2_ws/src
-   git clone https://github.com/Abd-El-Rhman-Saad/ROS2-Projects-.git
-   ```
-2. Install the Python dependencies above and add the interface packages and Depth Anything V2 to your workspace.
-3. Build and source the workspace:
-   ```bash
-   cd ~/ros2_ws
    colcon build --symlink-install
+   ```
+5. Source the overlay in your current terminal session:
+   ```bash
    source install/setup.bash
    ```
-4. Run the nodes of the system you want (each system folder has a `nodes/` directory).
 
 ## 👥 The Development Team
 This complete system design was successfully delivered through the joint efforts of:
