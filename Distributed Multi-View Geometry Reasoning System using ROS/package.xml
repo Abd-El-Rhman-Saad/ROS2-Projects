@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>multi_view_geometry</name>
+  <version>0.1.0</version>
+  <description>ROS 2 Jazzy distributed package for multi_view_geometry</description>
+  <maintainer email="abdelrhmanmsaad22@gmail.com">Abd El-Rhman Muhammad Saad</maintainer>
+  <license>MIT</license>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>message_filters</exec_depend>
+  <exec_depend>multi_view_interfaces</exec_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

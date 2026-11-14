@@ -1,69 +1,83 @@
 # ROS 2 Distributed Robotics & Computer Vision Systems
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ROS%202-Humble%20%7C%20Iron-22314E?style=for-the-badge&logo=ros&logoColor=white" alt="ROS 2" />
+  <img src="https://img.shields.io/badge/ROS%202-Jazzy-22314E?style=for-the-badge&logo=ros&logoColor=white" alt="ROS 2 Jazzy" />
   <img src="https://img.shields.io/badge/Language-Python%20%2F%20rclpy-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python rclpy" />
   <img src="https://img.shields.io/badge/Computer%20Vision-OpenCV%20%7C%20PyTorch-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV" />
   <img src="https://img.shields.io/badge/Edge%20AI-YOLOv8%20%7C%20DepthAnythingV2-00FFFF?style=for-the-badge" alt="AI Models" />
   <img src="https://img.shields.io/badge/Institution-Alexandria%20University-003366?style=for-the-badge" alt="Alexandria University" />
 </p>
 
-> **Project Engineer:** Abd El-Rhman Muhammad Saad  
-> **Academic Institution:** Faculty of Engineering, Alexandria University (Class of 2026)  
-> **Specialization:** Autonomous Robotics & Distributed Embedded Systems  
-> **Core Framework:** ROS 2 (`rclpy`), Distributed Edge AI, Multi-Agent Coordination & Epipolar Geometry  
-> **Collaborative Engineering Team:** Abd El-Rhman Saad, Tasneem El-Shandidi, Mariam Mamdouh, Rowan Tamer, Nada Mahmoud, Marina Said, Razan Ramzy, Nourhan El-Sayed  
-> **Project Repository:** [ROS2-Projects on GitHub](https://github.com/Abd-El-Rhman-Saad/ROS2-Projects-)
+> **Author:** Abd El-Rhman Muhammad Saad  
+> **Academic Institution:** Faculty of Engineering, Alexandria University  
+> **Specialization:** Robotics & Distributed Software Integration (`ROS 2 Jazzy`)  
+> **Core Framework:** ROS 2 Jazzy (`rclpy`), OpenCV, YOLOv8, DepthAnythingV2 & Epipolar Geometry  
+> **Collaborative Engineering Team:** Abd El-Rhman Saad, Tasneem El-Shandidi, Mariam Mamdouh, Rowan Tamer, Nada Mahmoud, Marina Said, Razan Ramzy, Asmaa Galal  
+> **Project Repository:** [ROS2-Projects on GitHub](https://github.com/Abd-El-Rhman-Saad/ROS2-Projects) *(forked from [Rowan-35/ROS2-Projects-](https://github.com/Rowan-35/ROS2-Projects-))*
 
 ---
 
-## 1. Executive Summary & Monorepo Architecture
+## 1. Executive Summary & Scope
 
-This repository hosts an industrial-grade **Distributed Multi-Robot & Edge Computer Vision Suite** engineered on the **ROS 2 (Robot Operating System 2)** framework using `rclpy`. The codebase implements five decoupled, high-performance distributed systems designed to solve complex challenges in multi-agent fleet scheduling, intelligent surveillance, academic proctoring, visual obstacle avoidance, and multi-view projective geometry.
+This repository contains five coursework **ROS 2 Jazzy** distributed multi-node systems developed in Python (`rclpy`) by an 8-student engineering team. The systems cover multi-agent grid fleet coordination, security surveillance, exam proctoring, visual navigation hints, and multi-view projective geometry.
 
-Unlike monolithic software patterns, each subsystem in this suite is strictly decomposed into a **Distributed Micro-Node Topology**. Individual computational tasks—ranging from frame acquisition and deep-learning inference to spatial geometry reasoning and safety monitoring—operate as independent ROS 2 nodes executing in isolated process spaces. Inter-node synchronization is achieved through an optimal blend of asynchronous publish/subscribe message streams, deterministic synchronous request/reply services, non-blocking goal-oriented action servers, and dynamic parameter reconfigurations.
+> **Simulation & Testing Scope:** All five subsystems are software-only implementations tested in simulation and against pre-recorded test videos or laptop webcams (no physical robot hardware or actuators were used).
+
+Each system is decomposed into independent ROS 2 nodes communicating through publish/subscribe topics, synchronous request/reply services, action servers/clients, and node-level ROS 2 parameters.
 
 ```
 +==================================================================================================+
-|                        ROS 2 DISTRIBUTED ROBOTICS & VISION SUITE                                 |
+|                        ROS 2 JAZZY DISTRIBUTED SYSTEMS SUITE                                     |
 +==================================================================================================+
 |                                                                                                  |
 |  [System 1: Grid Fleet Coordination]          [System 2: Smart Security Surveillance]            |
-|  * 4 Nodes | Discrete 8x8 Grid World          * 8 Nodes | Continuous Video Stream                |
-|  * Decentralized Collision Avoidance          * YOLOv8 Object Detection + DepthAnythingV2        |
-|  * Dynamic Task Allocation Service            * Action-Driven Security Alerts & Logging          |
+|  * 4 Nodes | Discrete 8x8 Grid Simulation     * 8 Nodes | Webcam / Recorded Video Stream         |
+|  * Decentralized Cell Reservation             * YOLOv8 Object Detection + DepthAnythingV2        |
+|  * Task Allocation & Move Services            * Event Manager, Alert Logging & System Monitor    |
 |                                                                                                  |
 |  [System 3: Smart Exam Proctoring]            [System 4: Visual Navigation Hint System]          |
-|  * 8 Nodes | Multi-Modal Visual AI            * 8 Nodes | Real-Time Obstacle Avoidance           |
-|  * Haar Cascades + YOLOv8 + Depth             * Dynamic ROI Tracking + Visual Odometry           |
-|  * Behavioral Rule Violation Engine           * Closed-Loop Steering Action Server               |
+|  * Multi-Modal Visual Pipeline                * 8 Nodes | Monocular Obstacle Avoidance Hints     |
+|  * Haar Cascades + YOLOv8 + Depth             * ROI Feature Extraction + Visual Odometry         |
+|  * Behavior Analysis & Alert Status           * Navigation Decision & Action Execution           |
 |                                                                                                  |
 |  [System 5: Multi-View Geometry Reasoning]                                                       |
-|  * 8 Nodes | Epipolar Geometry Pipeline                                                          |
-|  * ORB/Harris Keypoints + Ratio Test Match Filtering                                             |
-|  * Essential Matrix Estimation & 6-DOF Camera Pose Recovery (R, t)                               |
+|  * Epipolar Geometry Pipeline                                                                    |
+|  * ORB Keypoints + Lowe's Ratio Test + RANSAC Fundamental Matrix                                 |
+|  * Essential Matrix Pose Estimation (R, t) & Reliability Decision                                |
 +==================================================================================================+
 ```
 
 ---
 
-## 2. Master System Comparison Matrix
+## 2. Personal Contribution (Nodes Authored & Integrated)
 
-The following matrix provides an architectural breakdown of the five operational systems included in this monorepo:
+This monorepo is a collaborative 8-member team project where each member implemented and integrated specific nodes across the systems. My direct code contributions are:
 
-| Subsystem Name | Domain Focus | Node Count | Sensor Inputs | Primary AI & Algorithmic Stack | Communication Protocols | Key Custom Interfaces | Real-Time Output Decisions |
-| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :--- |
-| **1. Grid Fleet Coordination** | Multi-Agent Systems & Logistics | **4** | Virtual Odometry & Grid Feedback | Decentralized Reservation, Deadlock Detection | Topics, Services | `VehicleState.msg`<br>`RequestTask.srv`<br>`RequestMove.srv` | Cell reservations, step approvals, deadlock alarms |
-| **2. Security Surveillance** | Threat Detection & Facility Monitoring | **8** | RGB Video / USB Webcam | YOLOv8 Object Detection, DepthAnythingV2 Metric Depth | Topics, Actions, Parameters | `sensor_msgs/Image`<br>`vision_msgs/Detection2D`<br>`/security_action` | Threat classification, distance gating, security alerts |
-| **3. Exam Proctoring** | Academic Integrity & Anomaly Detection | **8** | Student Web Camera Stream | Haar Cascade Face Detection, YOLOv8 (Phones/Books), Depth | Topics, Services, Actions | `sensor_msgs/Image`<br>`/check_violation.srv`<br>`/alert_action` | Head pose monitoring, unauthorized object alerts |
-| **4. Visual Navigation** | Obstacle Clearance & Guidance | **8** | Monocular Camera Stream | YOLOv8, DepthAnythingV2, Lucas-Kanade Feature Shifts | Topics, Actions | `sensor_msgs/Image`<br>`geometry_msgs/Twist`<br>`/navigate_action` | Directional evasion hints (Left/Right/Halt) |
-| **5. Multi-View Geometry** | 3D Spatial Reasoning & Odometry | **8** | Consecutive Monocular Video Frames | Harris/ORB Features, Lowe's Ratio Test, Epipolar Geometry | Topics, Services, Actions | `Float32MultiArray`<br>`/check_geometry.srv`<br>`/report_action` | Essential Matrix $E$, Camera Pose $[R \mid t]$, Reliability State |
+| Subsystem | Node Authored / Co-Authored | Source File | Role & Implementation Summary |
+| :--- | :--- | :--- | :--- |
+| **System 2: Security Surveillance** | **Node 4.5 — Event Manager** | `event_manager_node.py` | Subscribes to `/scene_analysis`, evaluates `restricted_objects` and proximity flags, and publishes JSON event payloads on `/security_event`. |
+| **System 3: Exam Proctoring** | **Node 4.5 — Behavior Analysis** | `behavior_analysis_node.py` | Synchronizes `/face_coordinates`, `/object_data`, and `/object_depth` at 5 Hz (`0.2 s` timer) to detect prohibited objects, looking away, and unusual screen distance, publishing `/behavior_state`. |
+| **System 4: Visual Navigation** | **Node 4.7 — Navigation Decision** *(with Mariam Mamdouh)* | `navigation_node.py` | Subscribes to `/camera_motion`, `/object_data`, and `/depth_data` at 5 Hz to evaluate `safety_distance` and motion reliability, publishing directional commands (`move forward`, `move left`, `move right`, `stop`) on `/navigation_command`. |
+| **System 5: Multi-View Geometry** | **Node 4.8 — Reliability Decision** *(with Mariam Mamdouh)* | `reliability_decision_node.py` | Subscribes to `/geometric_inliers` (`FeatureMatchArray`) and `/camera_motion` at 5 Hz, evaluating `min_inliers` and motion confidence to publish `RELIABLE` / `UNRELIABLE` states on `/system_state`. |
+| **System 1: Grid Fleet Coordination** | Team Coursework Package | `fleet_coordination/` | Collaborative team assignment (node implementation led by Rowan Tamer). |
 
 ---
 
-## 3. Subsystem 1: Distributed Grid Fleet Coordination System
+## 3. Master System Comparison Matrix
 
-The **Grid Fleet Coordination System** manages autonomous automated guided vehicles (AGVs) operating across a discrete $8 \times 8$ logical warehouse grid ($X, Y \in [0, 7]$). It prevents physical collisions, eliminates grid deadlocks, and manages dynamic pickup-and-delivery logistics.
+| Subsystem Name | Domain Focus | Sensor / Test Inputs | Primary Stack | Communication Protocols | Key Interfaces | Output Decisions |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **1. Grid Fleet Coordination** | Multi-Agent Grid Logistics | Simulated $8 \times 8$ Grid Coordinates | Pure Python (`rclpy`) | Topics, Services | `VehicleState.msg`<br>`RequestTask.srv`<br>`RequestMove.srv` | Cell reservations, step approvals, deadlock warnings |
+| **2. Security Surveillance** | Threat Detection & Monitoring | USB Webcam / Recorded Video | YOLOv8, DepthAnythingV2 | Topics, Actions, Parameters | `sensor_msgs/Image`<br>`std_msgs/String`<br>`/security_action` | Threat classification, distance alerts, event logs |
+| **3. Exam Proctoring** | Academic Integrity Monitoring | Webcam / Recorded Exam Video | Haar Cascades, YOLOv8, DepthAnythingV2 | Topics, Parameters | `sensor_msgs/Image`<br>`std_msgs/String` | Looking-away flags, phone/book detection, alert status |
+| **4. Visual Navigation** | Obstacle Avoidance Hints | Monocular Video / Webcam | YOLOv8, DepthAnythingV2, ORB/ROI | Topics, Actions, Services | `ROIFeatures.msg`<br>`MotionData.msg`<br>`/navigate_action` | Directional hints (`move forward`, `move left`, `move right`, `stop`) |
+| **5. Multi-View Geometry** | Spatial Reasoning & Pose | Consecutive Monocular Frames | ORB, BFMatcher, RANSAC, `recoverPose` | Topics, Services | `multi_view_interfaces`<br>`std_msgs/String`<br>`/check_geometry` | Fundamental/Essential Matrix, $[R \mid t]$ direction, reliability state |
+
+---
+
+## 4. Subsystem 1: Distributed Grid Fleet Coordination System
+
+The **Grid Fleet Coordination System** simulates automated guided vehicles (AGVs) operating across a discrete $8 \times 8$ warehouse grid ($X, Y \in [0, 7]$), handling task allocation, cell reservation, and deadlock monitoring.
 
 ```
        +--------------------+                    +-----------------------+
@@ -86,257 +100,201 @@ The **Grid Fleet Coordination System** manages autonomous automated guided vehic
                        +----------------------------+
 ```
 
-### 3.1 Node Responsibilities & Concurrency
-* **`task_manager`:** Generates and maintains a backlog of randomized transport missions (pickup and dropoff coordinates). It exposes the `/request_task` service, dispensing jobs strictly one at a time and preventing duplicate assignments.
-* **`traffic_controller`:** Acts as the spatial arbiter. Before any vehicle executes a one-cell movement, it calls `/request_move`. The controller verifies:
-  1. **Boundary Limits:** $0 \le x_{\text{target}}, y_{\text{target}} \le 7$.
-  2. **Cell Occupancy:** Ensures target cell is unoccupied.
-  3. **Deadlock Detection:** Tracks wait timers per vehicle; flags a system alert if a vehicle remains blocked for $t_{\text{wait}} > 5.0\text{ s}$.
-* **`vehicle_node`:** Implements an internal Finite State Machine (FSM):
-  $$\text{IDLE} \xrightarrow{\text{task}} \text{REQUEST\_TASK} \xrightarrow{\text{received}} \text{MOVING\_TO\_PICKUP} \xrightarrow{\text{arrived}} \text{MOVING\_TO\_DROPOFF} \xrightarrow{\text{delivered}} \text{FINISHED}$$
-* **`monitor_node`:** Subscribes to `/vehicle_state`, computing active missions, idle fleets, completed delivery counts, and detecting frozen nodes.
+### 4.1 Node Responsibilities
+* **`task_manager`:** Generates 10 randomized pickup/dropoff missions and serves `/request_task` one mission at a time.
+* **`traffic_controller`:** Arbitrates single-cell moves via `/request_move`, checking grid bounds ($0 \le x, y \le 7$), cell occupancy, and wait timers ($t_{\text{wait}} > 5.0\text{ s}$ deadlock detection).
+* **`vehicle_node`:** Executes a Finite State Machine (`IDLE` $\to$ `REQUEST_TASK` $\to$ `MOVING_TO_PICKUP` $\to$ `MOVING_TO_DROPOFF` $\to$ `FINISHED`).
+* **`monitor_node`:** Subscribes to `/vehicle_state` to display active, idle, and completed vehicle states.
 
 ---
 
-## 4. Subsystem 2: Distributed Smart Security Surveillance System
+## 5. Subsystem 2: Distributed Smart Security Surveillance System
 
-The **Smart Security Surveillance System** implements an automated vision pipeline capable of detecting unauthorized persons, tracking suspicious physical objects, estimating metric distance, and dispatching security counteractions.
+The **Smart Security Surveillance System** processes webcam or recorded video streams to detect objects, estimate relative depth, flag proximity or restricted-item events, and log security alerts.
 
 <p align="center">
   <img src="images/surveillance_pipeline_architecture.png" alt="Smart Security Surveillance System Architecture" width="780" />
 </p>
 
-### 4.1 Vision Pipeline & Multi-Node Flow
-1. **`camera_stream`:** Captures raw video frames from USB webcams or video files, converting OpenCV BGR matrices into standard ROS `sensor_msgs/msg/Image` messages published on `/camera_frames` at $\ge 5\text{ FPS}$.
-2. **`object_detector`:** Ingests camera frames, running deep-learning inference via **YOLOv8** to identify humans, bags, vehicles, and tools. Bounding box coordinates and class labels are published on `/detected_objects`.
-3. **`depth_estimator`:** Executes relative metric depth prediction via **DepthAnythingV2**, generating dense depth maps published on `/object_depth`.
-4. **`scene_analyzer`:** Fuses 2D bounding boxes with depth maps to calculate the metric distance $Z_{\text{obj}}$ of each detected entity. If $Z_{\text{obj}} \le D_{\text{danger}}$, a critical proximity alert is triggered on `/scene_analysis`.
-5. **`event_manager`:** Applies spatial threat rules (e.g., restricted access zones, perimeter intrusion), issuing security event payloads to `/security_event`.
-6. **`security_response`:** Hosts the `/security_action` **Action Server**. For severe events, it coordinates long-duration defensive responses (e.g., siren activation, automated dispatch) with real-time feedback.
-7. **`event_logger` & `system_monitor`:** Persists timestamped threat incidents to disk and visualizes end-to-end processing latency across the vision pipeline.
+### 5.1 Vision Pipeline & Multi-Node Flow
+1. **`camera_stream_node`:** Reads webcam or video files and publishes `sensor_msgs/msg/Image` on `/camera_frames`.
+2. **`object_detection_node`:** Runs **YOLOv8** (`yolov8n.pt`) on incoming frames and publishes detections on `/detected_objects`.
+3. **`depth_estimation_node`:** Runs **DepthAnythingV2** (`vits`) to publish depth maps on `/object_depth`.
+4. **`Scene_Analysis_Node`:** Combines bounding boxes and depth values against `danger_distance` (`1.5 m`), publishing close objects on `/scene_analysis`.
+5. **`event_manager_node`:** Checks `/scene_analysis` against `restricted_objects` and proximity flags, publishing JSON payloads on `/security_event`.
+6. **`security_response_node`:** Assesses event severity (`low`/`medium`/`high`), publishes `/security_alert`, and dispatches goals to `/security_action` (using `example_interfaces/action/Fibonacci` as an action placeholder).
+7. **`event_logger_node` & `SystemMonitorNode`:** Persist `/security_event` and `/security_alert` logs to disk and monitor topic activity.
 
 ---
 
-## 5. Subsystem 3: Distributed Smart Exam Proctoring System
+## 6. Subsystem 3: Distributed Smart Exam Proctoring System
 
-Designed to automate academic integrity verification during computer-based examinations, this system detects student face presence, gaze orientation, mobile phones, books, and suspicious spatial behavior.
+Designed to monitor simulated exam sessions from webcam or recorded video files, this pipeline detects faces, prohibited items (phones and books), and screen distance.
 
 <p align="center">
   <img src="images/exam_proctoring_system_diagram.png" alt="Smart Exam Proctoring System Architecture" width="780" />
 </p>
 
-### 5.1 Algorithmic Architecture & Violation Engine
-* **`camera_stream` (Node 4.1):** High-resolution facial frame acquisition published to `/camera_frames`.
-* **`face_detection` (Node 4.2):** Applies **Haar Feature-based Cascade Classifiers** optimized for frontal and profile facial landmark detection, publishing head coordinates on `/face_data`.
-* **`object_detection` (Node 4.3):** Dedicated **YOLOv8** detector identifying forbidden examination items (smartphones, textbooks, earbuds), publishing detections on `/object_data`.
-* **`depth_estimation` (Node 4.4):** Estimates user-to-screen distance using **DepthAnythingV2**, publishing depth readings on `/depth_data`.
-* **`behavior_analysis` (Node 4.5):** Spatio-temporal state estimator that merges face position, object proximity, and depth. It detects behavioral anomalies: looking away for $> 3\text{ s}$, absence from camera view, or second-person intrusion.
-* **`rule_evaluation` (Node 4.6):** Evaluates academic compliance rules and provides the `/check_violation` service, publishing confirmed infractions on `/violation_event`.
-* **`alert_action` (Node 4.7):** Action server managing progressive disciplinary warnings (visual screen alert $\to$ audio warning $\to$ proctor notification).
-* **`system_monitor` (Node 4.8):** Real-time dashboard showing proctoring health and integrity confidence scores.
+### 6.1 Pipeline Nodes
+* **`camera_stream_node`:** Publishes video frames to `/camera_frames` at a configurable `frame_rate` (default `10 Hz`).
+* **`object_detection_node`:** Runs **YOLOv8** filtered to COCO classes `67` (`cell phone`) and `73` (`book`), publishing `/object_data`.
+* **`depth_estimation_node`:** Estimates depth maps using **DepthAnythingV2** on `/object_depth`.
+* **`behavior_analysis_node`:** Combines `/face_coordinates`, `/object_data`, and `/object_depth` at 5 Hz to flag `object_usage`, `looking_away` (side face), and `unusual_distance` ($< 1.0\text{ m}$), publishing `/behavior_state`.
+* **`alert_action_node`:** Subscribes to `/violation_event` and publishes formatted alert strings to `/alert_status`.
 
 ---
 
-## 6. Subsystem 4: Distributed Visual Navigation Hint System
+## 7. Subsystem 4: Distributed Visual Navigation Hint System
 
-This system provides real-time vision-based navigation guidance for ground rovers and visually impaired individuals by detecting forward obstacles, estimating movement odometry, and executing avoidance hints.
+This system generates directional obstacle-avoidance hints from monocular video streams using object detection, depth estimation, ROI feature tracking, and visual odometry.
 
 <p align="center">
   <img src="images/visual_navigation_structure.png" alt="Visual Navigation Hint System Architecture" width="780" />
 </p>
 
-### 6.1 Guidance Pipeline & Evasion Control
-1. **Sensory Ingestion:** `camera_stream` delivers high-frequency RGB frames to `/camera_frames`.
-2. **Dual Vision Tracking:**
-   * `object_detection`: Detects static and dynamic obstacles using YOLOv8, publishing to `/object_data`.
-   * `depth_estimation`: Computes obstacle distance maps via DepthAnythingV2, publishing to `/depth_data`.
-3. **Spatial Feature Extraction:** `roi_features` divides the forward corridor into three distinct regions of interest (**Left**, **Center**, **Right**), extracting local edge and corner features.
-4. **Motion Tracking & Visual Odometry:**
-   * `motion_tracking`: Tracks pixel shift vectors between consecutive frames using differential optical flow.
-   * `visual_odometry`: Computes instantaneous camera translational direction and rotational rate, published on `/camera_motion`.
-5. **Guidance Decision:** `navigation_decision` combines obstacle distance, corridor congestion, and camera motion. It computes safety clearance and issues reactive directional hints (`MOVE_LEFT`, `MOVE_RIGHT`, `EMERGENCY_STOP`) on `/navigation_command`.
-6. **Action Execution:** `action_execution` hosts the `/navigate_action` Action Server, executing smooth trajectory transitions while streaming feedback to `/action_status`.
+### 7.1 Guidance Pipeline
+1. **`camera_stream_node` & `object_detection_node` & `depth_estimation_node`:** Publish `/camera_frames`, `/object_data`, and `/depth_data`.
+2. **`feature_extraction_node`:** Splits frames into a $3 \times 4$ grid of ROIs, computing HSV statistics, Canny edge centroids, and ORB keypoint counts published via `navigation_msgs/msg/ROIFeatures` on `/roi_features`.
+3. **`motion_tracking_node`:** Tracks ROI centroid displacements across frames and publishes `navigation_msgs/msg/MotionData` on `/motion_data`.
+4. **`visual_odometry_node`:** Estimates camera motion direction, blur variance, and reliability on `/camera_motion` (plus `/estimate_motion` trigger service).
+5. **`navigation_node`:** Evaluates `/camera_motion`, `/object_data`, and `/depth_data` at 5 Hz against `safety_distance` (`1.5 m`) and publishes hints (`move forward`, `move left`, `move right`, `stop`) on `/navigation_command`.
+6. **`action_execution_node`:** Hosts the `/navigate_action` Action Server and publishes status strings to `/action_status`.
 
 ---
 
-## 7. Subsystem 5: Distributed Multi-View Geometry Reasoning System
+## 8. Subsystem 5: Distributed Multi-View Geometry Reasoning System
 
-This subsystem performs fundamental epipolar geometry estimation, feature extraction, cross-frame correspondence matching, and 6-DOF camera pose reconstruction from monocular image sequences.
+This subsystem performs keypoint detection, ORB descriptor extraction, Lowe's ratio test matching, RANSAC Fundamental Matrix filtering, camera pose estimation, and reliability evaluation across consecutive frames.
 
 <p align="center">
   <img src="images/multiview_geometry_reasoning_pipeline.png" alt="Multi-View Geometry Reasoning Pipeline" width="780" />
 </p>
 
-### 7.1 Mathematical Foundations of Epipolar Geometry
-For two consecutive camera views observing a 3D scene point $P$, let $x_1$ and $x_2$ represent normalized homogeneous image coordinates. The fundamental epipolar constraint dictates:
+### 8.1 Mathematical Foundations
+For consecutive camera views observing a 3D point $P$, normalized image coordinates $x_1$ and $x_2$ satisfy the epipolar constraint:
 
-$$x_2^T E x_1 = 0$$
+$$x_2^T E x_1 = 0, \quad E = [t]_\times R$$
 
-Where $E$ is the **Essential Matrix**, parameterized by the relative rotation matrix $R \in SO(3)$ and translation vector $t \in \mathbb{R}^3$:
-
-$$E = [t]_\times R = \begin{bmatrix} 0 & -t_z & t_y \\ t_z & 0 & -t_x \\ -t_y & t_x & 0 \end{bmatrix} R$$
-
-The system calculates $E$ using the normalized coordinates mapped via the camera intrinsic calibration matrix $K$:
+where $E$ is the Essential Matrix, $R \in SO(3)$ is relative rotation, and $t \in \mathbb{R}^3$ is relative translation, using the camera intrinsic matrix $K$:
 
 $$K = \begin{bmatrix} f & 0 & c_x \\ 0 & f & c_y \\ 0 & 0 & 1 \end{bmatrix}$$
 
-Relative camera pose $[R \mid t]$ is recovered through Singular Value Decomposition (SVD) of $E$, ensuring cheirality constraints (points lie strictly in front of both camera planes).
-
-### 7.2 Multi-Node Pipeline Execution
-* **`keypoint_detection` (Node 4.2):** Extracts corner keypoints $p_i = (u, v)$ across the image plane (minimum requirement: $\ge 20$ keypoints).
-* **`descriptor_extraction` (Node 4.3):** Computes robust local feature descriptors (e.g., ORB/BRIEF bitstrings) for each detected keypoint.
-* **`feature_matching` (Node 4.4):** Evaluates Hamming/Euclidean distance across descriptor spaces of consecutive frames, producing raw match candidates on `/raw_matches`.
-* **`match_filtering` (Node 4.5):** Rejects ambiguous correspondences using **Lowe's Ratio Test**:
-  $$\frac{\text{dist}(\text{best})}{\text{dist}(\text{second\_best})} < \tau_{\text{ratio}} \quad (\tau_{\text{ratio}} \approx 0.75)$$
-* **`geometric_consistency` (Node 4.6):** Fits the Essential Matrix using RANSAC to eliminate outliers. Points satisfying the epipolar threshold are published on `/geometric_inliers`.
-* **`motion_estimation` (Node 4.7):** Executes `cv::recoverPose()` on inlier sets, extracting rotation $R$ and translation $t$ to reconstruct 3D camera trajectory.
-* **`reliability_decision` (Node 4.8):** Assesses scene stability. If inlier matches fall below threshold ($N_{\text{inliers}} < N_{\min}$) or motion vectors diverge, it classifies the state as `UNRELIABLE` or `LOW_FEATURES`.
+### 8.2 Multi-Node Pipeline
+* **`keypoint_detection_node` (Node 4.2):** Extracts up to 200 ORB keypoints on `/keypoints` (warns if $< 20$ keypoints).
+* **`descriptor_extraction_node` (Node 4.3):** Synchronizes `/camera_frames` and `/keypoints` (`ApproximateTimeSynchronizer`) to publish ORB descriptors on `/descriptors`.
+* **`feature_matching_node` (Node 4.4):** Matches consecutive frames using `cv2.BFMatcher(cv2.NORM_HAMMING)` and Lowe's ratio test (`0.75`), publishing `/raw_matches`.
+* **`geometric_consistency_node` (Node 4.6):** Runs `cv2.findFundamentalMat(..., cv2.FM_RANSAC)` to publish `/geometric_inliers` and serves `/check_geometry`.
+* **`motion_estimation_node` (Node 4.7):** Computes `cv.findEssentialMat` and `cv.recoverPose` to publish directional motion strings on `/camera_motion`.
+* **`reliability_decision_node` (Node 4.8):** Evaluates `min_inliers` ($8$) and `min_motion_confidence` ($0.4$) at 5 Hz to publish `RELIABLE` or `UNRELIABLE` on `/system_state`.
 
 ---
 
-## 8. Custom ROS 2 Interface Definitions
+## 9. Custom ROS 2 Interface Definitions Included
 
-To ensure deterministic serial communication across nodes, the following custom messages and services are implemented:
+### 9.1 `fleet_interfaces` (System 1)
+* `msg/VehicleState.msg`: `string vehicle_id`, `string current_state`, `int32 x`, `int32 y`
+* `srv/RequestTask.srv`: `string vehicle_id` $\to$ `bool success`, `int32 pickup_x`, `int32 pickup_y`, `int32 dropoff_x`, `int32 dropoff_y`
+* `srv/RequestMove.srv`: `string vehicle_id`, `int32 current_x`, `int32 current_y`, `int32 target_x`, `int32 target_y` $\to$ `bool approved`
 
-### 8.1 Fleet Interfaces (`fleet_interfaces`)
-
-**`fleet_interfaces/msg/VehicleState.msg`**
-```text
-string vehicle_id
-string current_state
-int32 x
-int32 y
-```
-
-**`fleet_interfaces/srv/RequestTask.srv`**
-```text
-string vehicle_id
----
-bool success
-int32 pickup_x
-int32 pickup_y
-int32 dropoff_x
-int32 dropoff_y
-```
-
-**`fleet_interfaces/srv/RequestMove.srv`**
-```text
-string vehicle_id
-int32 current_x
-int32 current_y
-int32 target_x
-int32 target_y
----
-bool approved
-```
+### 9.2 `navigation_msgs` (System 4)
+* `msg/ROIFeatures.msg`: `num_rois`, `roi_ids`, `centroids_x/y`, `mean_hue/saturation/value`, `keypoint_count`, `bbox_x/y/w/h`
+* `msg/MotionData.msg`: `std_msgs/Header header`, `avg_dx`, `avg_dy`, `displacements_x`, `displacements_y`, `num_matches`, `confidence`
 
 ---
 
-## 9. Workspace Setup & Build Protocol
+## 10. Workspace Setup & Build Notes
 
-### 9.1 Environment Prerequisites
-* **Operating System:** Ubuntu 22.04 LTS (Jammy Jellyfish) or Ubuntu 24.04 LTS (Noble Numbat)
-* **ROS 2 Distribution:** ROS 2 Humble Hawksbill or ROS 2 Iron Irwini
-* **Python Environment:** Python $\ge 3.10$ with PyTorch, TorchVision, Ultralytics, and OpenCV
+### 10.1 Environment Prerequisites
+* **Operating System:** Ubuntu 24.04 LTS (Noble Numbat)
+* **ROS 2 Distribution:** ROS 2 Jazzy Jalisco (`rclpy`)
+* **Python Dependencies:** Python $\ge 3.12$, `torch`, `torchvision`, `ultralytics`, `opencv-python`, `numpy`
 
 ```bash
-# 1. Install ROS 2 Vision and Build Dependencies
 sudo apt update && sudo apt install -y \
-  ros-$ROS_DISTRO-cv-bridge \
-  ros-$ROS_DISTRO-image-transport \
-  ros-$ROS_DISTRO-message-filters \
-  ros-$ROS_DISTRO-vision-msgs \
+  ros-jazzy-cv-bridge \
+  ros-jazzy-image-transport \
+  ros-jazzy-message-filters \
   python3-colcon-common-extensions
 
-# 2. Install Python Deep Learning Stack
 pip3 install torch torchvision opencv-python numpy ultralytics
 ```
 
-### 9.2 Cloning & Compiling the Workspace
+### 10.2 Cloning & Building
 ```bash
-# 1. Initialize ROS 2 Workspace
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-
-# 2. Clone Monorepo
-git clone https://github.com/Abd-El-Rhman-Saad/ROS2-Projects-.git .
-
-# 3. Build All Workspace Packages
-cd ~/ros2_ws
-colcon build --symlink-install
-
-# 4. Source the Workspace Overlay
-source install/setup.bash
+git clone https://github.com/Abd-El-Rhman-Saad/ROS2-Projects.git .
 ```
 
-### 9.3 Launching Subsystems
-Each subsystem can be initiated by executing its constituent nodes across independent terminals or via ROS 2 launch scripts:
+> **Build Scope Note:** `fleet_coordination` + `fleet_interfaces` (System 1) include complete build manifests and custom `.msg`/`.srv` definitions and build directly via `colcon build --packages-select fleet_interfaces fleet_coordination`. For the vision systems, `navigation_msgs` is included for System 4, while `custom_msgs` (System 2 `Scene_Analysis_Node.py`), `action_pkg` (System 4 `action_execution_node.py`), and `multi_view_interfaces` (System 5) are external interface packages not bundled in this repository; additionally, video paths in `camera_stream_node.py` point to local test files and should be updated (or set to webcam `0`) before running.
 
 ```bash
-# Example: Launching System 1 (Grid Fleet Coordination)
+# Example: Building and running System 1 (Grid Fleet Coordination)
+cd ~/ros2_ws
+colcon build --packages-select fleet_interfaces fleet_coordination
+source install/setup.bash
+
 ros2 run fleet_coordination task_manager
 ros2 run fleet_coordination traffic_controller
-ros2 run fleet_coordination vehicle_node vehicle1
+ros2 run fleet_coordination vehicle_node vehicleA
 ros2 run fleet_coordination monitor_node
-
-# Example: Launching System 5 (Multi-View Geometry)
-ros2 run multi_view_geometry camera_stream_node 0
-ros2 run multi_view_geometry keypoint_detection_node
-ros2 run multi_view_geometry descriptor_extraction_node
-ros2 run multi_view_geometry feature_matching_node
-ros2 run multi_view_geometry match_filtering_node
-ros2 run multi_view_geometry geometric_consistency_node
-ros2 run multi_view_geometry motion_estimation_node
-ros2 run multi_view_geometry reliability_decision_node
 ```
 
 ---
 
-## 10. Monorepo Repository Structure
+## 11. Repository Structure
 
 ```
 ROS2-Projects/
-├── images/                                                # Consolidated architectural system diagrams
-│   ├── surveillance_pipeline_architecture.png             # System 2 pipeline architecture diagram
-│   ├── exam_proctoring_system_diagram.png                 # System 3 proctoring system diagram
-│   ├── visual_navigation_structure.png                    # System 4 navigation guidance structure
-│   └── multiview_geometry_reasoning_pipeline.png          # System 5 epipolar geometry pipeline
-├── docs/                                                  # Academic project specifications
-│   └── Task2_Robotics_Specification.pdf                   # Formal requirements document
-├── Distributed Grid Fleet Coordination System/            # System 1: Multi-Agent Warehouse Fleet
+├── images/                                                # System architecture diagrams
+│   ├── surveillance_pipeline_architecture.png
+│   ├── exam_proctoring_system_diagram.png
+│   ├── visual_navigation_structure.png
+│   └── multiview_geometry_reasoning_pipeline.png
+├── docs/
+│   └── Task2_Robotics_Specification.pdf                   # Coursework specification document
+├── Distributed Grid Fleet Coordination System/            # System 1 (fleet_coordination + fleet_interfaces)
 │   ├── nodes/
-│   │   ├── task_manager.py                                # Task allocation service provider
-│   │   ├── traffic_controller.py                          # Spatial reservation and deadlock detector
-│   │   ├── vehicle_node.py                                # FSM vehicle agent
-│   │   └── monitor_node.py                                # Dashboard system observer
-│   └── setup/
-├── Distributed Smart Security Surveillance System using ROS/ # System 2: Autonomous Threat Surveillance
-│   ├── nodes/                                             # 8 modular pipeline nodes
-│   └── System_structure.png                               # Original source diagram
-├── Distributed Smart Exam Proctoring System using ROS/    # System 3: Academic Integrity Proctoring
-│   ├── nodes/                                             # 8 multi-modal proctoring nodes
-│   └── system_diagram.png                                 # Original source diagram
-├── Distributed Visual Navigation Hint System using ROS/   # System 4: Obstacle Evasion & Guidance
-│   └── nodes/                                             # 8 navigation and feature nodes
-├── Distributed Multi-View Geometry Reasoning System using ROS/ # System 5: Epipolar Geometry & 3D Pose
-│   ├── nodes/                                             # 8 spatial reasoning nodes
-│   └── system structure.png                               # Original source diagram
-└── README.md                                              # Master Monorepo Documentation
+│   ├── setup/
+│   ├── fleet_interfaces/
+│   ├── package.xml
+│   └── setup.py
+├── Distributed Smart Security Surveillance System using ROS/ # System 2 (smart_security_system)
+│   ├── nodes/
+│   ├── package.xml
+│   ├── setup.py
+│   └── System_structure.png
+├── Distributed Smart Exam Proctoring System using ROS/    # System 3 (exam_proctoring_system)
+│   ├── nodes/
+│   ├── package.xml
+│   ├── setup.py
+│   └── system_diagram.png
+├── Distributed Visual Navigation Hint System using ROS/   # System 4 (navigation_hint_system + navigation_msgs)
+│   ├── nodes/
+│   ├── navigation_msgs/
+│   ├── package.xml
+│   └── setup.py
+├── Distributed Multi-View Geometry Reasoning System using ROS/ # System 5 (multi_view_geometry)
+│   ├── nodes/
+│   ├── package.xml
+│   ├── setup.py
+│   └── system structure.png
+└── README.md
 ```
 
 ---
 
-## 11. Authors & Academic Attribution
+## 12. Authors & Academic Attribution
 
 ```
 Abd El-Rhman Muhammad Saad
-Department of Electrical Engineering
-Faculty of Engineering, Alexandria University (Class of 2026)
+Department of Electrical Power and Machines Engineering
+Faculty of Engineering, Alexandria University
 Alexandria, Egypt
 ```
-* **GitHub Profile:** [@Abd-El-Rhman-Saad](https://github.com/Abd-El-Rhman-Saad)
-* **LinkedIn Profile:** [Abd El-Rhman Saad](https://linkedin.com/in/Abd-El-Rhman-Saad)
-* **Email Contact:** [abdelrhmanmsaad22@gmail.com](mailto:abdelrhmanmsaad22@gmail.com)
+* **GitHub:** [@Abd-El-Rhman-Saad](https://github.com/Abd-El-Rhman-Saad)
+* **LinkedIn:** [Abd El-Rhman Saad](https://linkedin.com/in/Abd-El-Rhman-Saad)
+* **Email:** [abdelrhmanmsaad22@gmail.com](mailto:abdelrhmanmsaad22@gmail.com)
 
-**Collaborative Team Attribution:**  
-Developed by the engineering team at Alexandria University: **Abd El-Rhman Saad**, **Tasneem El-Shandidi**, **Mariam Mamdouh**, **Rowan Tamer**, **Nada Mahmoud**, **Marina Said**, **Razan Ramzy**, and **Nourhan El-Sayed**.
+**Collaborative Team:**  
+**Abd El-Rhman Saad**, **Tasneem El-Shandidi**, **Mariam Mamdouh**, **Rowan Tamer**, **Nada Mahmoud**, **Marina Said**, **Razan Ramzy**, and **Asmaa Galal**.

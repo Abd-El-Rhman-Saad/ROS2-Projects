@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>exam_proctoring_system</name>
+  <version>0.1.0</version>
+  <description>ROS 2 Jazzy distributed package for exam_proctoring_system</description>
+  <maintainer email="abdelrhmanmsaad22@gmail.com">Abd El-Rhman Muhammad Saad</maintainer>
+  <license>MIT</license>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
