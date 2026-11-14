@@ -292,9 +292,10 @@ Department of Electrical Power and Machines Engineering
 Faculty of Engineering, Alexandria University
 Alexandria, Egypt
 ```
-* **GitHub:** [@Abd-El-Rhman-Saad](https://github.com/Abd-El-Rhman-Saad)
-* **LinkedIn:** [Abd El-Rhman Saad](https://linkedin.com/in/Abd-El-Rhman-Saad)
-* **Email:** [abdelrhmanmsaad22@gmail.com](mailto:abdelrhmanmsaad22@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abd_El--Rhman_Saad-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/Abd-El-Rhman-Saad)
+[![GitHub](https://img.shields.io/badge/GitHub-Abd--El--Rhman--Saad-181717?logo=github&logoColor=white)](https://github.com/Abd-El-Rhman-Saad)
+[![Email](https://img.shields.io/badge/Email-abdelrhmanmsaad22@gmail.com-D14836?logo=gmail&logoColor=white)](mailto:abdelrhmanmsaad22@gmail.com)
+
 
 **Collaborative Team:**  
 **Abd El-Rhman Saad**, **Tasneem El-Shandidi**, **Mariam Mamdouh**, **Rowan Tamer**, **Nada Mahmoud**, **Marina Said**, **Razan Ramzy**, and **Asmaa Galal**.
