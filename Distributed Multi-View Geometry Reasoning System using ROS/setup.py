@@ -1,13 +1,13 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 package_name = 'multi_view_geometry'
 
 setup(
     name=package_name,
     version='0.1.0',
-    packages=find_packages(exclude=['test']),
+    packages=[package_name],
+    package_dir={package_name: 'nodes'},
     data_files=[
-        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=['setuptools'],
@@ -18,12 +18,13 @@ setup(
     license='MIT',
     entry_points={
         'console_scripts': [
-            'keypoint_detection_node = nodes.keypoint_detection_node:main',
-            'descriptor_extraction_node = nodes.descriptor_extraction_node:main',
-            'feature_matching_node = nodes.feature_matching_node:main',
-            'geometric_consistency_node = nodes.geometric_consistency_node:main',
-            'motion_estimation_node = nodes.motion_estimation_node:main',
-            'reliability_decision_node = nodes.reliability_decision_node:main',
+            'camera_stream_node = multi_view_geometry.camera_stream_node:main',
+            'keypoint_detection_node = multi_view_geometry.keypoint_detection_node:main',
+            'descriptor_extraction_node = multi_view_geometry.descriptor_extraction_node:main',
+            'feature_matching_node = multi_view_geometry.feature_matching_node:main',
+            'geometric_consistency_node = multi_view_geometry.geometric_consistency_node:main',
+            'motion_estimation_node = multi_view_geometry.motion_estimation_node:main',
+            'reliability_decision_node = multi_view_geometry.reliability_decision_node:main',
         ],
     },
 )

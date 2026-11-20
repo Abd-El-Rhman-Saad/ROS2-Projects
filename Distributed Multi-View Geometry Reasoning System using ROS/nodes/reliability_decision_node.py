@@ -28,7 +28,7 @@ import json
 from multi_view_interfaces.msg import FeatureMatchArray
 
 # Replace with your actual action interface when created
-# from multi_view_interfaces.action import ReportAction 
+# from multi_view_interfaces.action import ReportAction
 
 class ReliabilityDecisionNode(Node):
 
@@ -38,10 +38,10 @@ class ReliabilityDecisionNode(Node):
         super().__init__('reliability_decision_node')
 
         # ── Parameters ──────────────────────────────────────────────────────
-        # ROS1 DIFFERENCE: ROS1 uses a global "Parameter Server" (rospy.get_param). 
+        # ROS1 DIFFERENCE: ROS1 uses a global "Parameter Server" (rospy.get_param).
         # ROS2 ties parameters directly to the specific node, requiring declaration first.
-        self.declare_parameter('min_inliers', 8)  # Changed default to 8 based on Node 4.6 minimum[cite: 13]
-        self.declare_parameter('min_motion_confidence', 0.4) 
+        self.declare_parameter('min_inliers', 8)  # Changed default to 8 based on Node 4.6 minimum
+        self.declare_parameter('min_motion_confidence', 0.4)
 
         self.min_inliers = self.get_parameter('min_inliers').value
         self.min_motion_confidence = self.get_parameter('min_motion_confidence').value
@@ -53,7 +53,7 @@ class ReliabilityDecisionNode(Node):
 
         # ── Subscribers ─────────────────────────────────────────────────────
         # ROS1 DIFFERENCE: ROS2 requires a QoS profile (the '10').
-        
+
         # 🛠️ CORRECTION: Changed message type from String to FeatureMatchArray
         self.sub_inliers = self.create_subscription(
             FeatureMatchArray,
@@ -73,7 +73,7 @@ class ReliabilityDecisionNode(Node):
         self.pub_state = self.create_publisher(String, '/system_state', 10)
 
         # ── Action Server ────────────────────────────────────────────────────
-        # Requirement 4.8 & 6: Action /report_action[cite: 12]
+        # Requirement 4.8 & 6: Action /report_action
         # Note: Uncomment when 'ReportAction' interface is ready
         # ROS1 DIFFERENCE: ROS1 uses actionlib.SimpleActionServer. ROS2 uses rclpy.action.ActionServer.
         # self._action_server = ActionServer(
@@ -91,7 +91,7 @@ class ReliabilityDecisionNode(Node):
     # ── Callbacks ────────────────────────────────────────────────────────────
 
     def inliers_callback(self, msg: FeatureMatchArray):
-        # 🛠️ CORRECTION: Logic updated to read from the Custom Message structure[cite: 13]
+        # 🛠️ CORRECTION: Logic updated to read from the Custom Message structure
         self.num_inliers = len(msg.matches)
 
     def motion_callback(self, msg: String):
@@ -105,10 +105,10 @@ class ReliabilityDecisionNode(Node):
     def execute_action_callback(self, goal_handle):
         """Handler for the /report_action request."""
         self.get_logger().info('Received report action request...')
-        
+
         # In a real scenario, you would provide feedback here
         goal_handle.succeed()
-        
+
         # Return the current reliability state as the result
         # result = ReportAction.Result()
         # result.status = self.current_decision
@@ -126,7 +126,7 @@ class ReliabilityDecisionNode(Node):
             'timestamp': self.get_clock().now().to_msg().sec
         })
         self.pub_state.publish(out)
-        
+
         # ROS1 DIFFERENCE: Logging binds to the specific node instance (`self.get_logger()`).
         if self.current_decision == 'RELIABLE':
             self.get_logger().info(f'State: {self.current_decision}')
@@ -141,14 +141,14 @@ class ReliabilityDecisionNode(Node):
         motion_conf    = self.latest_motion.get('confidence', 0.0)
         blur_detected  = self.latest_motion.get('blur_detected', False)
 
-        # Rule 1: Check inlier count[cite: 12]
+        # Rule 1: Check inlier count
         if self.num_inliers < self.min_inliers:
-            # If inliers are very low, we might lack features[cite: 12]
-            if self.num_inliers < 5: 
+            # If inliers are very low, we might lack features
+            if self.num_inliers < 5:
                 return 'LOW_FEATURES'
             return 'UNRELIABLE'
 
-        # Rule 2: Failure handling for blur or low motion confidence[cite: 12]
+        # Rule 2: Failure handling for blur or low motion confidence
         if blur_detected or motion_conf < self.min_motion_confidence:
             return 'UNRELIABLE'
 

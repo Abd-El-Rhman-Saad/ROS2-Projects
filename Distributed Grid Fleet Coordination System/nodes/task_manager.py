@@ -2,15 +2,15 @@ import rclpy
 from rclpy.node import Node
 import random
 # Note: You will need to build your fleet_interfaces package first for this import to work
-from fleet_interfaces.srv import RequestTask 
+from fleet_interfaces.srv import RequestTask
 
 class TaskManager(Node):
     def __init__(self):
         super().__init__('task_manager')
-        # Provide the /request_task service [cite: 55, 56]
+        # Provide the /request_task service
         self.srv = self.create_service(RequestTask, '/request_task', self.handle_task_request)
-        
-        # Generate at least 10 tasks [cite: 51] and store in a list [cite: 53]
+
+        # Generate at least 10 tasks and store in a list
         self.tasks = []
         for _ in range(10):
             task = {
@@ -18,14 +18,14 @@ class TaskManager(Node):
                 'dropoff': (random.randint(0, 7), random.randint(0, 7))
             }
             self.tasks.append(task)
-            
-        self.completed_tasks = 0 # Keep count of completed tasks [cite: 59]
+
+        self.completed_tasks = 0 # Keep count of completed tasks
         self.get_logger().info('Task Manager initialized with 10 tasks.')
 
     def handle_task_request(self, request, response):
-        # Assign one task at a time [cite: 57]
+        # Assign one task at a time
         if len(self.tasks) > 0:
-            assigned_task = self.tasks.pop(0) # Never assign same task twice [cite: 58]
+            assigned_task = self.tasks.pop(0) # Never assign same task twice
             response.success = True
             response.pickup_x = assigned_task['pickup'][0]
             response.pickup_y = assigned_task['pickup'][1]

@@ -1,13 +1,13 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 package_name = 'exam_proctoring_system'
 
 setup(
     name=package_name,
     version='0.1.0',
-    packages=find_packages(exclude=['test']),
+    packages=[package_name],
+    package_dir={package_name: 'nodes'},
     data_files=[
-        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=['setuptools'],
@@ -18,11 +18,11 @@ setup(
     license='MIT',
     entry_points={
         'console_scripts': [
-            'camera_stream_node = nodes.camera_stream_node:main',
-            'object_detection_node = nodes.object_detection_node:main',
-            'depth_estimation_node = nodes.depth_estimation_node:main',
-            'behavior_analysis_node = nodes.behavior_analysis_node:main',
-            'alert_action_node = nodes.alert_action_node:main',
+            'camera_stream_node = exam_proctoring_system.camera_stream_node:main',
+            'object_detection_node = exam_proctoring_system.object_detection_node:main',
+            'depth_estimation_node = exam_proctoring_system.depth_estimation_node:main',
+            'behavior_analysis_node = exam_proctoring_system.behavior_analysis_node:main',
+            'alert_action_node = exam_proctoring_system.alert_action_node:main',
         ],
     },
 )

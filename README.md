@@ -8,12 +8,12 @@
   <img src="https://img.shields.io/badge/Institution-Alexandria%20University-003366?style=for-the-badge" alt="Alexandria University" />
 </p>
 
-> **Author:** Abd El-Rhman Muhammad Saad  
+> **Maintainer of this fork:** Abd El-Rhman Muhammad Saad *(contributor, see [Personal Contribution](#2-personal-contribution-nodes-authored--integrated))*  
+> **Original Repository:** [Rowan-35/ROS2-Projects-](https://github.com/Rowan-35/ROS2-Projects-) — developed by an 8-student team at Alexandria University  
 > **Academic Institution:** Faculty of Engineering, Alexandria University  
-> **Specialization:** Robotics & Distributed Software Integration (`ROS 2 Jazzy`)  
 > **Core Framework:** ROS 2 Jazzy (`rclpy`), OpenCV, YOLOv8, DepthAnythingV2 & Epipolar Geometry  
 > **Collaborative Engineering Team:** Abd El-Rhman Saad, Tasneem El-Shandidi, Mariam Mamdouh, Rowan Tamer, Nada Mahmoud, Marina Said, Razan Ramzy, Asmaa Galal  
-> **Project Repository:** [ROS2-Projects on GitHub](https://github.com/Abd-El-Rhman-Saad/ROS2-Projects) *(forked from [Rowan-35/ROS2-Projects-](https://github.com/Rowan-35/ROS2-Projects-))*
+> **Fork Repository:** [ROS2-Projects on GitHub](https://github.com/Abd-El-Rhman-Saad/ROS2-Projects)
 
 ---
 
@@ -51,7 +51,7 @@ Each system is decomposed into independent ROS 2 nodes communicating through pub
 
 ## 2. Personal Contribution (Nodes Authored & Integrated)
 
-This monorepo is a collaborative 8-member team project where each member implemented and integrated specific nodes across the systems. My direct code contributions are:
+This monorepo is a collaborative 8-member team project where each member authored and integrated specific nodes across the systems (note: in the original upstream repository, several node files were committed by Rowan Tamer during team integration):
 
 | Subsystem | Node Authored / Co-Authored | Source File | Role & Implementation Summary |
 | :--- | :--- | :--- | :--- |
@@ -59,7 +59,7 @@ This monorepo is a collaborative 8-member team project where each member impleme
 | **System 3: Exam Proctoring** | **Node 4.5 — Behavior Analysis** | `behavior_analysis_node.py` | Synchronizes `/face_coordinates`, `/object_data`, and `/object_depth` at 5 Hz (`0.2 s` timer) to detect prohibited objects, looking away, and unusual screen distance, publishing `/behavior_state`. |
 | **System 4: Visual Navigation** | **Node 4.7 — Navigation Decision** *(with Mariam Mamdouh)* | `navigation_node.py` | Subscribes to `/camera_motion`, `/object_data`, and `/depth_data` at 5 Hz to evaluate `safety_distance` and motion reliability, publishing directional commands (`move forward`, `move left`, `move right`, `stop`) on `/navigation_command`. |
 | **System 5: Multi-View Geometry** | **Node 4.8 — Reliability Decision** *(with Mariam Mamdouh)* | `reliability_decision_node.py` | Subscribes to `/geometric_inliers` (`FeatureMatchArray`) and `/camera_motion` at 5 Hz, evaluating `min_inliers` and motion confidence to publish `RELIABLE` / `UNRELIABLE` states on `/system_state`. |
-| **System 1: Grid Fleet Coordination** | Team Coursework Package | `fleet_coordination/` | Collaborative team assignment (node implementation led by Rowan Tamer). |
+| **System 1: Grid Fleet Coordination** | Team Coursework Package | `nodes/` | Team assignment (see repository history). |
 
 ---
 
@@ -214,6 +214,7 @@ sudo apt update && sudo apt install -y \
   ros-jazzy-cv-bridge \
   ros-jazzy-image-transport \
   ros-jazzy-message-filters \
+  ros-jazzy-example-interfaces \
   python3-colcon-common-extensions
 
 pip3 install torch torchvision opencv-python numpy ultralytics
@@ -226,17 +227,20 @@ cd ~/ros2_ws/src
 git clone https://github.com/Abd-El-Rhman-Saad/ROS2-Projects.git .
 ```
 
-> **Build Scope Note:** `fleet_coordination` + `fleet_interfaces` (System 1) include complete build manifests and custom `.msg`/`.srv` definitions and build directly via `colcon build --packages-select fleet_interfaces fleet_coordination`. For the vision systems, `navigation_msgs` is included for System 4, while `custom_msgs` (System 2 `Scene_Analysis_Node.py`), `action_pkg` (System 4 `action_execution_node.py`), and `multi_view_interfaces` (System 5) are external interface packages not bundled in this repository; additionally, video paths in `camera_stream_node.py` point to local test files and should be updated (or set to webcam `0`) before running.
+> **Build & Interface Scope Note:**  
+> * **System 1 (`fleet_coordination` + `fleet_interfaces`):** Includes `package.xml`, `setup.py`, `setup.cfg`, and `.msg`/`.srv` definitions (`VehicleState.msg`, `RequestTask.srv`, `RequestMove.srv`). *(Note: `colcon build` has not been re-run on this consolidated repository layout after adding the packaging manifests.)*  
+> * **Missing Interface Packages:** `multi_view_interfaces` (System 5: `Keypoint`, `KeypointArray`, `Descriptor`, `DescriptorArray`, `FeatureMatch`, `FeatureMatchArray`, `CheckGeometry`), `custom_msgs` (System 2 `Scene_Analysis_Node.py`: `Object`, `Objects`), and `action_pkg` (System 4 `action_execution_node.py`: `Navigate`) are **not included** in this repository. Consequently, Systems 2, 4, and 5 cannot be built or run end-to-end as-is without supplying those interface packages.  
+> * **Test Video Paths:** `camera_stream_node.py` references local test video paths and should be updated (or passed `0` for a webcam) before execution.
 
 ```bash
-# Example: Building and running System 1 (Grid Fleet Coordination)
+# Example: Intended build & run commands for System 1 (Grid Fleet Coordination) on ROS 2 Jazzy
 cd ~/ros2_ws
 colcon build --packages-select fleet_interfaces fleet_coordination
 source install/setup.bash
 
 ros2 run fleet_coordination task_manager
 ros2 run fleet_coordination traffic_controller
-ros2 run fleet_coordination vehicle_node vehicleA
+ros2 run fleet_coordination vehicle_node vehicle1
 ros2 run fleet_coordination monitor_node
 ```
 
@@ -255,20 +259,18 @@ ROS2-Projects/
 │   └── Task2_Robotics_Specification.pdf                   # Coursework specification document
 ├── Distributed Grid Fleet Coordination System/            # System 1 (fleet_coordination + fleet_interfaces)
 │   ├── nodes/
-│   ├── setup/
 │   ├── fleet_interfaces/
 │   ├── package.xml
+│   ├── setup.cfg
 │   └── setup.py
 ├── Distributed Smart Security Surveillance System using ROS/ # System 2 (smart_security_system)
 │   ├── nodes/
 │   ├── package.xml
-│   ├── setup.py
-│   └── System_structure.png
+│   └── setup.py
 ├── Distributed Smart Exam Proctoring System using ROS/    # System 3 (exam_proctoring_system)
 │   ├── nodes/
 │   ├── package.xml
-│   ├── setup.py
-│   └── system_diagram.png
+│   └── setup.py
 ├── Distributed Visual Navigation Hint System using ROS/   # System 4 (navigation_hint_system + navigation_msgs)
 │   ├── nodes/
 │   ├── navigation_msgs/
@@ -277,8 +279,7 @@ ROS2-Projects/
 ├── Distributed Multi-View Geometry Reasoning System using ROS/ # System 5 (multi_view_geometry)
 │   ├── nodes/
 │   ├── package.xml
-│   ├── setup.py
-│   └── system structure.png
+│   └── setup.py
 └── README.md
 ```
 
@@ -292,10 +293,11 @@ Department of Electrical Power and Machines Engineering
 Faculty of Engineering, Alexandria University
 Alexandria, Egypt
 ```
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abd_El--Rhman_Saad-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/Abd-El-Rhman-Saad)
-[![GitHub](https://img.shields.io/badge/GitHub-Abd--El--Rhman--Saad-181717?logo=github&logoColor=white)](https://github.com/Abd-El-Rhman-Saad)
-[![Email](https://img.shields.io/badge/Email-abdelrhmanmsaad22@gmail.com-D14836?logo=gmail&logoColor=white)](mailto:abdelrhmanmsaad22@gmail.com)
-
+<p align="left">
+  <a href="https://linkedin.com/in/Abd-El-Rhman-Saad"><img src="https://img.shields.io/badge/LinkedIn-Abd_El--Rhman_Saad-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://github.com/Abd-El-Rhman-Saad"><img src="https://img.shields.io/badge/GitHub-Abd--El--Rhman--Saad-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="mailto:abdelrhmanmsaad22@gmail.com"><img src="https://img.shields.io/badge/Email-abdelrhmanmsaad22@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+</p>
 
 **Collaborative Team:**  
 **Abd El-Rhman Saad**, **Tasneem El-Shandidi**, **Mariam Mamdouh**, **Rowan Tamer**, **Nada Mahmoud**, **Marina Said**, **Razan Ramzy**, and **Asmaa Galal**.

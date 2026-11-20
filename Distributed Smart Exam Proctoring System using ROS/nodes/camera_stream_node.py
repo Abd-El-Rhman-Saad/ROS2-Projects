@@ -8,7 +8,7 @@ from cv_bridge import CvBridge
 class CameraStreamNode(Node):
     def __init__(self, stream_source_arg):
         super().__init__('camera_stream_node')
-        # 1. declaring variable and stream sources path 
+        # 1. declaring variable and stream sources path
         self.frames_publisher = self.create_publisher(Image, '/camera_frames', 10) #publish through ?camera_frames topic
         self.bridge = CvBridge()
         self.stream_path = "0" # Initialize as string "0" to keep parameter types consistent
@@ -20,16 +20,16 @@ class CameraStreamNode(Node):
         elif stream_source_arg == 3:
             self.stream_path= "/home/nada/Downloads/exam3.mp4"
         elif stream_source_arg == 4:
-            self.stream_path= "/home/nada/Downloads/exam4.mp4" 
+            self.stream_path= "/home/nada/Downloads/exam4.mp4"
         elif stream_source_arg == 5:
             self.stream_path= "/home/nada/Downloads/exam5.mp4"
         else:
             self.stream_path= "0"
-        
+
         # 2. declaring parameters (frame _rate & stream_source)
         self.declare_parameter('stream_source', self.stream_path)
-        self.declare_parameter('frame_rate', 10) # Minimum is 5 FPS 
-        
+        self.declare_parameter('frame_rate', 10) # Minimum is 5 FPS
+
         # Accessing values using .value for ROS 2 compatibility
         self.conf_frame_rate = self.get_parameter('frame_rate').value
         self.conf_stream_source = self.get_parameter('stream_source').value
@@ -41,13 +41,13 @@ class CameraStreamNode(Node):
 
         # 4. Timer creation
         self.timer = self.create_timer(1.0 / self.conf_frame_rate, self.timer_callback)
-    
+
     def timer_callback(self):
         ret, frame= self.cap.read()
         if not ret:
             self.get_logger().warning("End of video or camera error")
             self.get_logger().info("Stream finished. Closing...")
-            cv2.destroyAllWindows() # Closes the 'camera stream' window [cite: 45]
+            cv2.destroyAllWindows() # Closes the 'camera stream' window
             self.timer.cancel()
             return
 
@@ -63,7 +63,7 @@ class CameraStreamNode(Node):
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.header.frame_id = str(self.frame_id)
         self.frame_id += 1
-        #publish 
+        #publish
         self.frames_publisher.publish(msg)
 
 
